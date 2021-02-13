@@ -1,0 +1,26 @@
+﻿@font-face {
+    font-family: "STAY HOME";
+    src: url("../assets/fonts/STAY\ HOME.otf")
+}
+
+h1 {
+    font-family: "STAY HOME";
+    color: black;
+    border: 2px solid black;
+    background-color: rgb(240, 240, 240);
+    vertical-align: middle;
+}
+
+body {
+    background-color: black;
+}
+
+#canvas {
+    /* background-color: no-repeat center/80% url("../assets/images/background.jpg"); */
+    background-color: lightgrey;
+    border: 2px solid red;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
