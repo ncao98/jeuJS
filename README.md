@@ -12,5 +12,10 @@ Aides:
 - Les cours, démonstrations et MOOC mis à disposition.
 
 Bug(s) constaté(s):
-- Dès le début, les ennemis tirent en même temps, et si le joueur se prend les projectiles, il meurt instantanément.
-Je pensais avoir résolu ça avec un setInterval() random pour chaque ennemi...
+- Dès le début, les ennemis tirent en même temps, et si le joueur se prend les projectiles, il meurt instantanément (il perd un nombre de vies égales au nombre de balles reçues).
+Je pensais avoir résolu ça avec une fonction pour les faire tirer à une cadence aléatoire (Math.floor(Math.random() * 2000) + 1000) pour chaque ennemi...
+
+Fonctionnalités:
+- Un bonus apparaît tous les 5 secondes, si le joueur le prend, le bonus augmente la cadence de tir de 0.001, son apparition est aléatoire.
+- Tirs du joueur avec souris ou barre d'espace
+- Musique en arrière-plan et effets sonores à chaque tir (avec la souris, pas avec la barre d'espace).
