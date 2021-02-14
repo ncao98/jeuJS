@@ -19,3 +19,6 @@ Fonctionnalités:
 - Un bonus apparaît tous les 5 secondes, si le joueur le prend, le bonus augmente la cadence de tir de 0.001, son apparition est aléatoire.
 - Tirs du joueur avec souris ou barre d'espace
 - Musique en arrière-plan et effets sonores à chaque tir (avec la souris, pas avec la barre d'espace).
+
+Remarques:
+- Mon CV est actuellement hébergé sur GitHub Pages, et je n'ai pas conservé toutes mes données pour le mettre à jour avec le projet donc je ne peux pas héberger le jeu via la plateforme.
