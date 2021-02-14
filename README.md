@@ -10,3 +10,7 @@ Aides:
 - https://jsbin.com/viwekol/ pour la gestion des tirs
 - http://miageprojet2.unice.fr/@api/deki/files/2987/=script.js pour la gestion des assets
 - Les cours, démonstrations et MOOC mis à disposition.
+
+Bug(s) constaté(s):
+- Dès le début, les ennemis tirent en même temps, et si le joueur se prend les projectiles, il meurt instantanément.
+Je pensais avoir résolu ça avec un setInterval() random pour chaque ennemi...
