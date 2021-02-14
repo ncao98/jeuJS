@@ -10,6 +10,7 @@ let vie = 3;
 let niveau = 1;
 let aEnemies = [];
 let rate = 1;
+let aBonus = [];
 let etatJeu = "menuPrincipal";
 
 window.onload = init;
@@ -36,10 +37,12 @@ function startGame(assetsLoaded) {
     imgSprite = assets.imgSprite;
     // dernier param = temps min entre tirs consecutifs. Mettre à 0 pour cadence max
     // 500 = 2 tirs max par seconde, 100 = 10 tirs/seconde
-    sprite = new Sprite(600, 300, 0, 1, 500 / rate, imgSprite);
+    sprite = new Sprite(600, 300, 0, 1, 500, imgSprite);
 
     // création des ennemis
     imgEnemy = assets.imgEnemy;
+
+    setInterval(function () { creerDesBalles(1); }, 5000);
 
     // animation à 60ips
     requestAnimationFrame(animationLoop);
@@ -93,13 +96,15 @@ function jeuEnCours() {
     // 2) On dessine et on déplace le sprite 1
     sprite.draw(ctx);
     sprite.move(mousepos);
-
+    updateSpriteBullets();
     if (inputStates.SPACE) {
         sprite.addBullet(Date.now());
     }
 
     //créer des ennemis
     updateEnnemis();
+
+    updateBalles();
 }
 
 function afficherInfosJeu() {
@@ -180,4 +185,42 @@ function updateEnnemis() {
     if (aEnemies.length == 0) {
         etatJeu = "ecranChangementNiveau";
     }
+}
+
+function creerDesBalles(nb) {
+
+    let tabCouleurs = ["blue"];
+
+    for (let i = 0; i < nb; i++) {
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        let rayon = 5;
+        let indexCouleur = Math.floor(Math.random() * tabCouleurs.length);
+        let couleur = tabCouleurs[indexCouleur];
+        let vx = -0.5 + Math.random() * 0.5;
+        let vy = -1 + Math.random() * 1;
+
+        let b = new Balle(x, y, rayon, couleur, vx, vy);
+
+        aBonus.push(b);
+    }
+}
+
+function updateBalles() {
+    // utilisation d'un itérateur 
+    aBonus.forEach((b) => {
+        b.draw(ctx);
+        traiteCollisionsBallesBonusAvecBords(b);
+        traiteCollisionsBallesBonusAvecJoueur(b);
+        b.move();
+    })
+}
+
+function updateSpriteBullets() {
+    if (vie != 0) { 
+        sprite.delayMinBetweenBullets = sprite.delayMinBetweenBullets / rate; 
+    } else if (vie <= 0) { 
+        sprite.delayMinBetweenBullets = 500;
+    }
+
 }

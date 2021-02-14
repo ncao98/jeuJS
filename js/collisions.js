@@ -102,3 +102,40 @@ function traiteCollisionsBallesEnnemisAvecJoueur(e) {
         }
     });
 }
+
+function traiteCollisionsBallesBonusAvecJoueur(b) {
+    if (circRectsOverlap(sprite.x, sprite.y, sprite.width, sprite.height,
+        b.x, b.y, b.rayon)) {
+
+        //on cherche l'index de la balle dans le tableau des balles
+        let index = aBonus.indexOf(b);
+
+        //pour supprimer un élément: on utilise la méthode 
+        //splice(index, nbElementsASupprimer) sur le tableau
+        aBonus.splice(index, 1);
+        rate += 0.001;
+    }
+}
+
+function traiteCollisionsBallesBonusAvecBords(b) {
+    if (b.x + b.rayon > canvas.width) {
+      //console.log("COLLISION A DROITE");
+      // truc à savoir, pour ne pas que l'objet donne l'impression
+      // d'aller plus loin que le bord de l'écran, on le remet au point de
+      // contact
+      b.x = canvas.width - b.rayon;
+      b.vitesseX = -b.vitesseX;
+    } else if (b.x - b.rayon < 0) {
+      //console.log("COLLISION A GAUCHE");
+      b.x = b.rayon; // point de contact
+      b.vitesseX = -b.vitesseX;
+    }
+  
+    if (b.y - b.rayon < 0) {
+      b.y = b.rayon;
+      b.vitesseY = -b.vitesseY;
+    } else if (b.y + b.rayon > canvas.height) {
+      b.y = canvas.height - b.rayon;
+      b.vitesseY = -b.vitesseY;
+    }
+  }

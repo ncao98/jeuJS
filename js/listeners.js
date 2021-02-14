@@ -29,6 +29,7 @@ function listeners() {
                 vie = 3;
                 niveau = 1;
                 score = 0;
+                rate = 1;
                 break;
         }
     });
