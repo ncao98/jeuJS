@@ -79,7 +79,7 @@ function traiteCollisionsJoueurAvecEnnemi(b) {
 
 function traiteCollisionsBallesAvecEnnemi(e) {
     sprite.bullets.forEach((b) => {
-        if (rectsOverlap(b.x, b.y, 10 ,2, e.x, e.y, e.width, e.height)) {
+        if (rectsOverlap(b.x, b.y, b.width, b.height, e.x, e.y, e.width, e.height)) {
             let positionBullet = sprite.bullets.indexOf(b);
             sprite.bullets.splice(positionBullet, 1);
 
@@ -89,4 +89,16 @@ function traiteCollisionsBallesAvecEnnemi(e) {
             console.log("Score : " + score);
         }
     })
+}
+
+function traiteCollisionsBallesEnnemisAvecJoueur(e) {
+    e.bullets.forEach((eb) => {
+        if (rectsOverlap(sprite.x, sprite.y, sprite.width, sprite.height, eb.x, eb.y, eb.width, eb.height)) {
+            let positionBullet = e.bullets.indexOf(eb);
+            e.bullets.splice(positionBullet, 1);
+
+            vie--;
+            console.log("Vie : " + vie);
+        }
+    });
 }

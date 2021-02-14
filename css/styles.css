@@ -12,12 +12,15 @@ h1 {
 }
 
 body {
-    background-color: black;
+    background-color: black !important;
 }
 
 #canvas {
-    /* background-color: no-repeat center/80% url("../assets/images/background.jpg"); */
+    background-image: url("../assets/images/background.jpg");
     background-color: lightgrey;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     border: 2px solid red;
 
     display: block;

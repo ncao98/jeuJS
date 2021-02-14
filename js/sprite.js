@@ -30,8 +30,8 @@ class Sprite {
     drawBullets(ctx) {
         for (let i = 0; i < this.bullets.length; i++) {
             let b = this.bullets[i];
-            b.draw(ctx);
-            b.move();
+            b.draw(ctx, "sprite");
+            b.move("sprite");
             if ((b.x < 0) || (b.y < 0) || (b.x > width) || (b.y > height))
                 this.removeBullet(b)
 

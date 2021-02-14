@@ -2,20 +2,20 @@
 const assetsToLoadURLs = {
     imgSprite: { url: "../assets/images/sprite.png" },
     imgEnemy: { url: "../assets/images/enemy.png" },
-    // plop: {
-    //   url:
-    //     "https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/sounds/plop.mp3",
-    //   buffer: false,
-    //   loop: false,
-    //   volume: 1.0,
-    // },
-    // humbug: {
-    //   url:
-    //     "https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/sounds/humbug.mp3",
-    //   buffer: true,
-    //   loop: true,
-    //   volume: 1.0,
-    // },
+    bgm: {
+      url:
+        "../assets/audio/BGM.mp3",
+      buffer: true,
+      loop: true,
+      volume: 0.1,
+    },
+    shoot: {
+      url:
+        "../assets/audio/shoot.mp3",
+      buffer: false,
+      loop: false,
+      volume: 0.5,
+    },
     // concertino: {
     //   url:
     //     "https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/sounds/christmas_concertino.mp3",

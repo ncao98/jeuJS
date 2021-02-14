@@ -9,7 +9,7 @@ class Enemy {
         this.vitesseY = vitesseY;
         this.bullets = [];
         // cadenceTir en millisecondes = temps min entre tirs
-        this.delayMinBetweenBullets = 1000;
+        this.delayMinBetweenBullets = Math.floor(Math.random() * 2000) + 1000;
         this.img = img;
     }
 
@@ -31,14 +31,16 @@ class Enemy {
     drawBullets(ctx) {
         for (let i = 0; i < this.bullets.length; i++) {
             let b = this.bullets[i];
-            b.draw(ctx);
-            b.move();
+            setInterval(this.drawAndMove(ctx, b), Math.floor(Math.random() * 2000) + 1000);
             if ((b.x < 0) || (b.y < 0) || (b.x > width) || (b.y > height))
                 this.removeBullet(b)
 
         }
     }
-
+    drawAndMove(ctx, b) {
+        b.draw(ctx);
+        b.move("enemy");
+    }
     move() {
         this.x += this.vitesseX;
         this.y += this.vitesseY;
