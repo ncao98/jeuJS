@@ -9,6 +9,7 @@ let score = 0;
 let vie = 3;
 let niveau = 1;
 let aEnemies = [];
+let rate = 1;
 let etatJeu = "menuPrincipal";
 
 window.onload = init;
@@ -35,7 +36,7 @@ function startGame(assetsLoaded) {
     imgSprite = assets.imgSprite;
     // dernier param = temps min entre tirs consecutifs. Mettre à 0 pour cadence max
     // 500 = 2 tirs max par seconde, 100 = 10 tirs/seconde
-    sprite = new Sprite(600, 300, 0, 1, 100, imgSprite);
+    sprite = new Sprite(600, 300, 0, 1, 500 / rate, imgSprite);
 
     // création des ennemis
     imgEnemy = assets.imgEnemy;
@@ -74,9 +75,9 @@ function afficherMenuPrincipal() {
     ctx.font = "30pt Calibri";
 
     ctx.fillStyle = "white";
-    ctx.fillText("MENU PRINCIPAL", canvas.width / 2 - 150, canvas.height / 2);
+    ctx.fillText("Touject Prohou", canvas.width / 2 - 150, canvas.height / 2);
 
-    ctx.fillText("Cliquez pour démarrer", canvas.width / 2 - 150, canvas.height / 2 + 30);
+    ctx.fillText("Cliquez pour démarrer", canvas.width / 2 - 200, canvas.height / 2 + 30);
 
     ctx.restore();
 }
@@ -117,7 +118,7 @@ function afficherEcranChangementNiveau() {
 
     ctx.fillText("NIVEAU SUIVANT", canvas.width / 2 - 150, canvas.height / 2);
 
-    ctx.fillText("Cliquez pour continuer", canvas.width / 2 - 150, canvas.height / 2 + 30);
+    ctx.fillText("Cliquez pour continuer", canvas.width / 2 - 200, canvas.height / 2 + 30);
 
     ctx.restore();
 }
@@ -126,17 +127,22 @@ function afficherEcranPerdu() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
 
-    ctx.font = "30pt Calibri";
+    ctx.font = "69pt Times New Roman";
 
-    ctx.fillText("PERDU", canvas.width / 2 - 150, canvas.height / 2);
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillText("Cliquez pour continuer", canvas.width / 2 - 150, canvas.height / 2 + 30);
+    ctx.fillStyle = "#4F0001";
+    ctx.fillText("YOU DIED", canvas.width / 2 - 200, canvas.height / 2);
 
+    ctx.font = "30pt Times New Roman";
+    ctx.fillText("Cliquez pour recommencer", canvas.width / 2 - 200, canvas.height / 2 + 50);
     ctx.restore();
 }
 
 function updateNiveau() {
     niveau++;
+    vie++;
     creerDesEnnemis(niveau * 5);
 }
 function distance(x1, y1, x2, y2) {
